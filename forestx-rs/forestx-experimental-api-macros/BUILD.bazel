@@ -1,0 +1,7 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "forestx-experimental-api-macros",
+    crate_name = "forestx_experimental_api_macros",
+    proc_macro = True,
+)

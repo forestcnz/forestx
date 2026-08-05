@@ -1,0 +1,21 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-memories-read"
+version.workspace = true
+
+[lib]
+name = "forestx_memories_read"
+path = "src/lib.rs"
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-protocol = { workspace = true }
+forestx-shell-command = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

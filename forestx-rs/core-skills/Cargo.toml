@@ -1,0 +1,44 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-core-skills"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_core_skills"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+forestx-analytics = { workspace = true }
+forestx-config = { workspace = true }
+forestx-context-fragments = { workspace = true }
+forestx-exec-server = { workspace = true }
+forestx-login = { workspace = true }
+forestx-model-provider = { workspace = true }
+forestx-otel = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-shell-command = { workspace = true }
+forestx-skills = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+forestx-utils-plugins = { workspace = true }
+forestx-utils-string = { workspace = true }
+dunce = { workspace = true }
+futures = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+shlex = { workspace = true }
+tokio = { workspace = true, features = ["fs", "macros", "rt"] }
+tracing = { workspace = true }
+zip = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
+tempfile = { workspace = true }
+toml = { workspace = true }

@@ -1,0 +1,19 @@
+[package]
+name = "forestx-utils-sandbox-summary"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-protocol = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+
+[dev-dependencies]
+forestx-utils-absolute-path = { workspace = true }
+pretty_assertions = { workspace = true }
+
+[lib]
+doctest = false

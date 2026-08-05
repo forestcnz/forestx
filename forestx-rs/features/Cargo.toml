@@ -1,0 +1,24 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-features"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_features"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-otel = { workspace = true }
+forestx-protocol = { workspace = true }
+schemars = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+toml = { workspace = true }
+tracing = { workspace = true, features = ["log"] }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

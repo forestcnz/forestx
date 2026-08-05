@@ -1,0 +1,9 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "memories",
+    compile_data = glob([
+        "templates/**",
+    ]),
+    crate_name = "forestx_memories_extension",
+)

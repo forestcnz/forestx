@@ -1,0 +1,48 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-skills-extension"
+version.workspace = true
+
+[lib]
+name = "forestx_skills_extension"
+path = "src/lib.rs"
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-config = { workspace = true }
+forestx-core-skills = { workspace = true }
+forestx-exec-server = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-mcp = { workspace = true }
+forestx-otel = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-skills = { workspace = true }
+forestx-tools = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+forestx-utils-plugins = { workspace = true }
+forestx-utils-string = { workspace = true }
+dirs = { workspace = true }
+futures = { workspace = true }
+schemars = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+tokio = { workspace = true, features = ["sync", "time"] }
+toml = { workspace = true }
+tracing = { workspace = true }
+url = { workspace = true }
+
+[dev-dependencies]
+forestx-models-manager = { workspace = true }
+forestx-utils-cargo-bin = { workspace = true }
+dunce = { workspace = true }
+insta = { workspace = true }
+opentelemetry_sdk = { workspace = true }
+pretty_assertions = { workspace = true }
+tempfile = { workspace = true }
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }

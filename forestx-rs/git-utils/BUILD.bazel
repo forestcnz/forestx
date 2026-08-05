@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "git-utils",
+    crate_name = "forestx_git_utils",
+)

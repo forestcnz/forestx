@@ -1,0 +1,33 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-memories-extension"
+version.workspace = true
+
+[lib]
+name = "forestx_memories_extension"
+path = "src/lib.rs"
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-core = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-features = { workspace = true }
+forestx-otel = { workspace = true }
+forestx-tools = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-output-truncation = { workspace = true }
+forestx-utils-template = { workspace = true }
+schemars = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, features = ["fs"] }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
+tempfile = { workspace = true }
+tokio = { workspace = true, features = ["fs", "macros"] }

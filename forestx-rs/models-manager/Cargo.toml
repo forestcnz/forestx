@@ -1,0 +1,32 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-models-manager"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_models_manager"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+chrono = { workspace = true, features = ["serde"] }
+forestx-collaboration-mode-templates = { workspace = true }
+forestx-http-client = { workspace = true }
+forestx-login = { workspace = true }
+forestx-otel = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-utils-output-truncation = { workspace = true }
+forestx-utils-template = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tokio = { workspace = true, features = ["fs", "sync", "time"] }
+tracing = { workspace = true, features = ["log"] }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
+serde_json = { workspace = true }
+tempfile = { workspace = true }

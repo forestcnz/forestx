@@ -1,6 +1,6 @@
-# OpenAI Codex Python SDK - API Reference
+# OpenAI Forestx Python SDK - API Reference
 
-Public surface of `openai_codex` for Codex workflows.
+Public surface of `openai_forestx` for Forestx workflows.
 
 Turn streams are routed by turn ID so one client can consume multiple active turns concurrently.
 Thread starts default to `ApprovalMode.auto_review`; turn starts accept an optional `approval_mode` override.
@@ -8,10 +8,10 @@ Thread starts default to `ApprovalMode.auto_review`; turn starts accept an optio
 ## Package Entry
 
 ```python
-from openai_codex import (
-    Codex,
-    AsyncCodex,
-    CodexConfig,
+from openai_forestx import (
+    Forestx,
+    AsyncForestx,
+    ForestxConfig,
     ApprovalMode,
     Sandbox,
     ChatgptLoginHandle,
@@ -32,7 +32,7 @@ from openai_codex import (
     SkillInput,
     MentionInput,
 )
-from openai_codex.types import (
+from openai_forestx.types import (
     Account,
     AccountLoginCompletedNotification,
     CancelLoginAccountResponse,
@@ -46,14 +46,14 @@ from openai_codex.types import (
 )
 ```
 
-- Version: `openai_codex.__version__`
+- Version: `openai_forestx.__version__`
 - Requires Python >= 3.10
-- Public Codex protocol value and event types live in `openai_codex.types`
+- Public Forestx protocol value and event types live in `openai_forestx.types`
 
-## Codex (sync)
+## Forestx (sync)
 
 ```python
-Codex(config: CodexConfig | None = None)
+Forestx(config: ForestxConfig | None = None)
 ```
 
 Properties/methods:
@@ -76,24 +76,24 @@ Properties/methods:
 Context manager:
 
 ```python
-with Codex() as codex:
+with Forestx() as forestx:
     ...
 ```
 
-## AsyncCodex (async parity)
+## AsyncForestx (async parity)
 
 ```python
-AsyncCodex(config: CodexConfig | None = None)
+AsyncForestx(config: ForestxConfig | None = None)
 ```
 
 Preferred usage:
 
 ```python
-async with AsyncCodex() as codex:
+async with AsyncForestx() as forestx:
     ...
 ```
 
-`AsyncCodex` initializes lazily. Context entry is the standard path because it
+`AsyncForestx` initializes lazily. Context entry is the standard path because it
 ensures startup and shutdown are paired explicitly.
 
 Properties/methods:
@@ -116,7 +116,7 @@ Properties/methods:
 Async context manager:
 
 ```python
-async with AsyncCodex() as codex:
+async with AsyncForestx() as forestx:
     ...
 ```
 
@@ -189,10 +189,10 @@ Use `turn(...)` when you need low-level turn control (`stream()`, `steer()`,
 Use `sandbox=` consistently on thread lifecycle methods and turns:
 
 ```python
-from openai_codex import Codex, Sandbox
+from openai_forestx import Forestx, Sandbox
 
-with Codex() as codex:
-    thread = codex.thread_start(sandbox=Sandbox.workspace_write)
+with Forestx() as forestx:
+    thread = forestx.thread_start(sandbox=Sandbox.workspace_write)
     result = thread.run("Review the diff only.", sandbox=Sandbox.read_only)
 ```
 
@@ -202,7 +202,7 @@ Presets:
 - `Sandbox.workspace_write`: the normal default for projects with a recorded trust decision; read files and write inside the workspace and configured writable roots.
 - `Sandbox.full_access`: run without filesystem access restrictions.
 
-When `sandbox=` is omitted, Codex uses its configured default. A sandbox
+When `sandbox=` is omitted, Forestx uses its configured default. A sandbox
 passed to `run(...)` or `turn(...)` applies to that turn and subsequent turns.
 
 ## TurnHandle / AsyncTurnHandle
@@ -217,7 +217,7 @@ passed to `run(...)` or `turn(...)` applies to that turn and subsequent turns.
 Behavior notes:
 
 - `stream()` and `run()` consume only notifications for their own turn ID
-- one `Codex` instance can stream multiple active turns concurrently
+- one `Forestx` instance can stream multiple active turns concurrently
 
 ### AsyncTurnHandle
 
@@ -229,7 +229,7 @@ Behavior notes:
 Behavior notes:
 
 - `stream()` and `run()` consume only notifications for their own turn ID
-- one `AsyncCodex` instance can stream multiple active turns concurrently
+- one `AsyncForestx` instance can stream multiple active turns concurrently
 
 ## Inputs
 
@@ -253,10 +253,10 @@ Use a plain `str` as shorthand for `TextInput(...)` anywhere a turn input is acc
 
 ## Public Types
 
-The SDK wrappers return and accept public Codex protocol models wherever possible:
+The SDK wrappers return and accept public Forestx protocol models wherever possible:
 
 ```python
-from openai_codex.types import (
+from openai_forestx.types import (
     Account,
     AccountLoginCompletedNotification,
     CancelLoginAccountResponse,
@@ -271,7 +271,7 @@ from openai_codex.types import (
 ## Retry + errors
 
 ```python
-from openai_codex import (
+from openai_forestx import (
     retry_on_overload,
     JsonRpcError,
     MethodNotFoundError,
@@ -287,10 +287,10 @@ from openai_codex import (
 ## Example
 
 ```python
-from openai_codex import Codex
+from openai_forestx import Forestx
 
-with Codex() as codex:
-    thread = codex.thread_start(model="gpt-5.4", config={"model_reasoning_effort": "high"})
+with Forestx() as forestx:
+    thread = forestx.thread_start(model="gpt-5.4", config={"model_reasoning_effort": "high"})
     result = thread.run("Say hello in one sentence.")
     print(result.final_response)
 ```

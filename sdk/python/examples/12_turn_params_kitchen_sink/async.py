@@ -12,10 +12,10 @@ ensure_local_sdk_src()
 
 import asyncio
 
-from openai_codex import (
-    AsyncCodex,
+from openai_forestx import (
+    AsyncForestx,
 )
-from openai_codex.types import (
+from openai_forestx.types import (
     Personality,
     ReasoningSummary,
 )
@@ -42,8 +42,8 @@ PROMPT = (
 
 
 async def main() -> None:
-    async with AsyncCodex(config=runtime_config()) as codex:
-        thread = await codex.thread_start(
+    async with AsyncForestx(config=runtime_config()) as forestx:
+        thread = await forestx.thread_start(
             model="gpt-5.4", config={"model_reasoning_effort": "high"}
         )
 

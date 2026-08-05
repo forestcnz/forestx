@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "stdio-to-uds",
+    crate_name = "forestx_stdio_to_uds",
+)

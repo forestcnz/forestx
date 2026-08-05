@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "response-debug-context",
+    crate_name = "forestx_response_debug_context",
+)

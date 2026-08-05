@@ -1,12 +1,12 @@
 #!/usr/bin/env -S NODE_NO_WARNINGS=1 pnpm ts-node-esm --files
 
-import { Codex } from "@openai/codex-sdk";
+import { Forestx } from "@openai/forestx-sdk";
 
-import { codexPathOverride } from "./helpers.ts";
+import { forestxPathOverride } from "./helpers.ts";
 
-const codex = new Codex({ codexPathOverride: codexPathOverride() });
+const forestx = new Forestx({ forestxPathOverride: forestxPathOverride() });
 
-const thread = codex.startThread();
+const thread = forestx.startThread();
 
 const schema = {
   type: "object",

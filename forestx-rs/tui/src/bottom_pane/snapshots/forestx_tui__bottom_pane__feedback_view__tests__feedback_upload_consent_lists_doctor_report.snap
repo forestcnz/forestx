@@ -1,0 +1,14 @@
+---
+source: tui/src/bottom_pane/feedback_view.rs
+assertion_line: 728
+expression: rendered
+---
+Upload logs?
+
+The following files will be sent:
+  • forestx-logs.log
+  • forestx-doctor-report.json
+  • forestx-apps-tools-cache.json (if available)
+  • forestx-app-directory-cache.json (if available)
+  • rollout.jsonl
+  • auto-review-rollout.jsonl

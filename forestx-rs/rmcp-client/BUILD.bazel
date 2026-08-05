@@ -1,0 +1,9 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "rmcp-client",
+    crate_name = "forestx_rmcp_client",
+    extra_binaries = [
+        "//forestx-rs/cli:forestx",
+    ],
+)

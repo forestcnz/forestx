@@ -1,0 +1,24 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-plugin"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_plugin"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-config = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+forestx-utils-plugins = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

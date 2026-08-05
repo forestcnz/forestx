@@ -1,0 +1,17 @@
+[package]
+name = "forestx-exec-server-test-support"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "lib.rs"
+test = false
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-exec-server = { workspace = true }
+forestx-http-client = { workspace = true }

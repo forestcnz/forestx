@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "extension-api",
+    crate_name = "forestx_extension_api",
+)

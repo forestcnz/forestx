@@ -1,0 +1,27 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-skills"
+version.workspace = true
+build = "build.rs"
+
+[lib]
+doctest = false
+name = "forestx_skills"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-protocol = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+include_dir = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_yaml = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

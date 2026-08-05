@@ -6,7 +6,7 @@ import path from "node:path";
 
 import { describe, it } from "@jest/globals";
 
-import { codexExecPath } from "./testCodex";
+import { forestxExecPath } from "./testForestx";
 
 const conformanceTimeoutMs = 300_000;
 const reviewerRegressionTimeoutMs = 180_000;
@@ -27,7 +27,7 @@ function conformanceDirectory(): string {
   ];
 
   for (const candidate of candidates) {
-    if (existsSync(path.join(candidate, "run_codex_compliance.py"))) {
+    if (existsSync(path.join(candidate, "run_forestx_compliance.py"))) {
       return candidate;
     }
   }
@@ -46,18 +46,18 @@ describe("MCP client conformance", () => {
         path.join(path.dirname(conformancePackage), "dist", "index.js"),
         "pinned official CLI",
       );
-      const codexBinary = requireFile(codexExecPath, "built Codex binary");
+      const forestxBinary = requireFile(forestxExecPath, "built Forestx binary");
       const baseline = requireFile(
         path.join(directory, "regression-baseline-v1.json"),
         "committed regression baseline",
       );
       const reportDirectory = process.env.RUNNER_TEMP ?? os.tmpdir();
-      const reportPath = path.join(reportDirectory, `codex-mcp-conformance-${process.pid}.json`);
+      const reportPath = path.join(reportDirectory, `forestx-mcp-conformance-${process.pid}.json`);
       const result = spawnSync(
         "python3",
         [
-          path.join(directory, "run_codex_compliance.py"),
-          codexBinary,
+          path.join(directory, "run_forestx_compliance.py"),
+          forestxBinary,
           "--mode",
           "all",
           "--transport",
@@ -103,7 +103,7 @@ describe("MCP client conformance", () => {
     "does not introduce production reviewer or catalog-boundary regressions",
     () => {
       const directory = conformanceDirectory();
-      const codexBinary = requireFile(codexExecPath, "built Codex binary");
+      const forestxBinary = requireFile(forestxExecPath, "built Forestx binary");
       const reviewer = requireFile(
         path.join(directory, "review_regressions.py"),
         "production reviewer regression runner",
@@ -113,12 +113,12 @@ describe("MCP client conformance", () => {
         "committed production reviewer regression baseline",
       );
       const reportDirectory = process.env.RUNNER_TEMP ?? os.tmpdir();
-      const reportPath = path.join(reportDirectory, `codex-mcp-review-${process.pid}.json`);
+      const reportPath = path.join(reportDirectory, `forestx-mcp-review-${process.pid}.json`);
       const result = spawnSync(
         "python3",
         [
           reviewer,
-          codexBinary,
+          forestxBinary,
           "--mode",
           "all",
           "--baseline-report",

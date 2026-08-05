@@ -1,0 +1,23 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-connectors-extension"
+version.workspace = true
+
+[lib]
+name = "forestx_connectors_extension"
+path = "src/lib.rs"
+doctest = false
+test = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-connectors = { workspace = true }
+forestx-core-plugins = { workspace = true }
+forestx-plugin = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }

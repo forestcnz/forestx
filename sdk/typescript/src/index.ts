@@ -26,9 +26,9 @@ export type {
 export { Thread } from "./thread";
 export type { RunResult, RunStreamedResult, Input, UserInput } from "./thread";
 
-export { Codex } from "./codex";
+export { Forestx } from "./forestx";
 
-export type { CodexOptions } from "./codexOptions";
+export type { ForestxOptions } from "./forestxOptions";
 
 export type {
   ThreadOptions,

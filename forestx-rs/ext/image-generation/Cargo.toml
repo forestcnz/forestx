@@ -1,0 +1,38 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-image-generation-extension"
+version.workspace = true
+
+[lib]
+name = "forestx_image_generation_extension"
+path = "src/lib.rs"
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+base64 = { workspace = true }
+forestx-api = { workspace = true }
+forestx-core = { workspace = true }
+forestx-exec-server = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-extension-items = { workspace = true }
+forestx-login = { workspace = true }
+forestx-model-provider = { workspace = true }
+forestx-model-provider-info = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-tools = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-image = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+http = { workspace = true }
+schemars = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
+tokio = { workspace = true, features = ["macros", "rt"] }

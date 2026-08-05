@@ -1,0 +1,25 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-prompts"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_prompts"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+forestx-context-fragments = { workspace = true }
+forestx-git-utils = { workspace = true }
+forestx-execpolicy = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-template = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

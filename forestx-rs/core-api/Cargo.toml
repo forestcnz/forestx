@@ -1,0 +1,32 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-core-api"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_core_api"
+path = "src/lib.rs"
+test = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-app-server-protocol = { workspace = true }
+forestx-arg0 = { workspace = true }
+forestx-analytics = { workspace = true }
+forestx-config = { workspace = true }
+forestx-core = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-home = { workspace = true }
+forestx-image-generation-extension = { workspace = true }
+forestx-exec-server = { workspace = true }
+forestx-features = { workspace = true }
+forestx-login = { workspace = true }
+forestx-model-provider-info = { workspace = true }
+forestx-models-manager = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-state = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }

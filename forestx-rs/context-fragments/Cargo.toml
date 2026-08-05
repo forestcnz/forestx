@@ -1,0 +1,18 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-context-fragments"
+version.workspace = true
+
+[lib]
+name = "forestx_context_fragments"
+path = "src/lib.rs"
+test = false
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-protocol = { workspace = true }
+forestx-utils-string = { workspace = true }

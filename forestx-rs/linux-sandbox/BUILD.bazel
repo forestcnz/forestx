@@ -1,0 +1,9 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "linux-sandbox",
+    crate_name = "forestx_linux_sandbox",
+    extra_binaries = [
+        "//forestx-rs/bwrap:bwrap",
+    ],
+)

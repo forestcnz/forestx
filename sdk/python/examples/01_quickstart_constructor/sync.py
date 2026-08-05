@@ -13,12 +13,12 @@ from _bootstrap import (
 
 ensure_local_sdk_src()
 
-from openai_codex import Codex
+from openai_forestx import Forestx
 
-with Codex(config=runtime_config()) as codex:
-    print("Server:", server_label(codex.metadata))
+with Forestx(config=runtime_config()) as forestx:
+    print("Server:", server_label(forestx.metadata))
 
-    thread = codex.thread_start(model="gpt-5.4", config={"model_reasoning_effort": "high"})
+    thread = forestx.thread_start(model="gpt-5.4", config={"model_reasoning_effort": "high"})
     result = thread.run("Say hello in one sentence.")
     print("Items:", len(result.items))
     print("Text:", result.final_response)

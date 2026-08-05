@@ -1,0 +1,40 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-tools"
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+bitflags = { workspace = true }
+forestx-code-mode = { workspace = true }
+forestx-connectors = { workspace = true }
+forestx-features = { workspace = true }
+forestx-file-system = { workspace = true }
+forestx-extension-items = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-output-truncation = { workspace = true }
+forestx-utils-pty = { workspace = true }
+forestx-utils-string = { workspace = true }
+jsonptr = { workspace = true }
+rmcp = { workspace = true, default-features = false, features = [
+    "base64",
+    "macros",
+    "schemars",
+    "server",
+] }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true, features = ["raw_value"] }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+urlencoding = { workspace = true }
+
+[dev-dependencies]
+forestx-utils-cargo-bin = { workspace = true }
+pretty_assertions = { workspace = true }
+
+[lib]
+doctest = false

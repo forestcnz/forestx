@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "sandbox-summary",
+    crate_name = "forestx_utils_sandbox_summary",
+)

@@ -1,0 +1,14 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "windows-sandbox-rs",
+    binary_test_target_compatible_with = ["@platforms//os:windows"],
+    build_script_data = [
+        "forestx-windows-sandbox-setup.manifest",
+    ],
+    crate_name = "forestx_windows_sandbox",
+    test_data_extra = [
+        ":forestx-command-runner",
+        ":forestx-windows-sandbox-setup",
+    ],
+)

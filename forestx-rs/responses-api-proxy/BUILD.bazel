@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "responses-api-proxy",
+    crate_name = "forestx_responses_api_proxy",
+)

@@ -1,10 +1,10 @@
-module(name = "codex")
+module(name = "forestx")
 
 bazel_dep(name = "bazel_skylib", version = "1.9.0")
 bazel_dep(name = "platforms", version = "1.0.0")
 bazel_dep(name = "llvm", version = "0.8.11")
 
-# Patch hermetic LLVM for Codex's custom libc++ and Windows gnullvm runtime
+# Patch hermetic LLVM for Forestx's custom libc++ and Windows gnullvm runtime
 # needs that have not landed upstream.
 single_version_override(
     module_name = "llvm",
@@ -208,8 +208,8 @@ register_toolchains("@rules_rust_bindgen//:all")
 
 crate = use_extension("@rules_rs//rs:extensions.bzl", "crate")
 crate.from_cargo(
-    cargo_lock = "//codex-rs:Cargo.lock",
-    cargo_toml = "//codex-rs:Cargo.toml",
+    cargo_lock = "//forestx-rs:Cargo.lock",
+    cargo_toml = "//forestx-rs:Cargo.toml",
     platform_triples = [
         "aarch64-unknown-linux-gnu",
         "aarch64-unknown-linux-musl",
@@ -522,7 +522,7 @@ http_file(
     downloaded_file_path = "rusty_v8_release_aarch64-pc-windows-msvc.lib.gz",
     sha256 = "54722842af36b74248c403ff531254efac6ff65d281198bab0c6350fc1188ad4",
     urls = [
-        "https://github.com/openai/codex/releases/download/rusty-v8-v150.4.0/rusty_v8_ptrcomp_sandbox_release_aarch64-pc-windows-msvc.lib.gz",
+        "https://github.com/openai/forestx/releases/download/rusty-v8-v150.4.0/rusty_v8_ptrcomp_sandbox_release_aarch64-pc-windows-msvc.lib.gz",
     ],
 )
 
@@ -531,7 +531,7 @@ http_file(
     downloaded_file_path = "rusty_v8_release_x86_64-pc-windows-msvc.lib.gz",
     sha256 = "732ec5da4243aa166799780c8519a5eea6f32f6e47657a323342794dc3c239d6",
     urls = [
-        "https://github.com/openai/codex/releases/download/rusty-v8-v150.4.0/rusty_v8_ptrcomp_sandbox_release_x86_64-pc-windows-msvc.lib.gz",
+        "https://github.com/openai/forestx/releases/download/rusty-v8-v150.4.0/rusty_v8_ptrcomp_sandbox_release_x86_64-pc-windows-msvc.lib.gz",
     ],
 )
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# Remote-env setup script for codex-rs integration tests.
+# Remote-env setup script for forestx-rs integration tests.
 #
 # Usage (source-only):
 #   source scripts/test-remote-env.sh
-#   cd codex-rs
-#   just test -p codex-core --test all remote_test_env_can_connect_and_use_filesystem
-#   codex_remote_env_cleanup
+#   cd forestx-rs
+#   just test -p forestx-core --test all remote_test_env_can_connect_and_use_filesystem
+#   forestx_remote_env_cleanup
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
@@ -17,15 +17,15 @@ is_sourced() {
 
 setup_remote_env() {
   local container_name
-  local codex_binary_path
+  local forestx_binary_path
   local container_ip
-  local remote_codex_path
+  local remote_forestx_path
   local remote_exec_server_pid
   local remote_exec_server_port
   local remote_exec_server_stdout_path
 
-  container_name="${CODEX_TEST_REMOTE_ENV_CONTAINER_NAME:-codex-remote-test-env-local-$(date +%s)-${RANDOM}}"
-  codex_binary_path="${CARGO_TARGET_DIR:-${REPO_ROOT}/codex-rs/target}/debug/codex"
+  container_name="${FORESTX_TEST_REMOTE_ENV_CONTAINER_NAME:-forestx-remote-test-env-local-$(date +%s)-${RANDOM}}"
+  forestx_binary_path="${CARGO_TARGET_DIR:-${REPO_ROOT}/forestx-rs/target}/debug/forestx"
 
   if ! command -v docker >/dev/null 2>&1; then
     echo "docker is required (Colima or Docker Desktop)" >&2
@@ -38,17 +38,17 @@ setup_remote_env() {
   fi
 
   if ! command -v cargo >/dev/null 2>&1; then
-    echo "cargo is required to build codex" >&2
+    echo "cargo is required to build forestx" >&2
     return 1
   fi
 
   (
-    cd "${REPO_ROOT}/codex-rs"
-    cargo build -p codex-cli --bin codex
+    cd "${REPO_ROOT}/forestx-rs"
+    cargo build -p forestx-cli --bin forestx
   )
 
-  if [[ ! -f "${codex_binary_path}" ]]; then
-    echo "codex binary not found at ${codex_binary_path}" >&2
+  if [[ ! -f "${forestx_binary_path}" ]]; then
+    echo "forestx binary not found at ${forestx_binary_path}" >&2
     return 1
   fi
 
@@ -64,16 +64,16 @@ setup_remote_env() {
     return 1
   fi
 
-  if [[ -z "${CODEX_TEST_REMOTE_EXEC_SERVER_URL:-}" ]]; then
-    remote_codex_path="/tmp/codex-remote-env/codex"
+  if [[ -z "${FORESTX_TEST_REMOTE_EXEC_SERVER_URL:-}" ]]; then
+    remote_forestx_path="/tmp/forestx-remote-env/forestx"
     remote_exec_server_port="31987"
-    remote_exec_server_stdout_path="/tmp/codex-remote-env/exec-server.stdout"
-    docker exec "${container_name}" sh -lc "mkdir -p /tmp/codex-remote-env"
-    docker cp "${codex_binary_path}" "${container_name}:${remote_codex_path}"
-    docker exec "${container_name}" chmod +x "${remote_codex_path}"
+    remote_exec_server_stdout_path="/tmp/forestx-remote-env/exec-server.stdout"
+    docker exec "${container_name}" sh -lc "mkdir -p /tmp/forestx-remote-env"
+    docker cp "${forestx_binary_path}" "${container_name}:${remote_forestx_path}"
+    docker exec "${container_name}" chmod +x "${remote_forestx_path}"
     remote_exec_server_pid="$(
       docker exec "${container_name}" sh -lc \
-        "rm -f ${remote_exec_server_stdout_path}; nohup ${remote_codex_path} exec-server --listen ws://0.0.0.0:${remote_exec_server_port} > ${remote_exec_server_stdout_path} 2>&1 & echo \$!"
+        "rm -f ${remote_exec_server_stdout_path}; nohup ${remote_forestx_path} exec-server --listen ws://0.0.0.0:${remote_exec_server_port} > ${remote_exec_server_stdout_path} 2>&1 & echo \$!"
     )"
     wait_for_remote_exec_server_port "${container_name}" "${remote_exec_server_port}" "${remote_exec_server_stdout_path}"
     container_ip="$(
@@ -84,13 +84,13 @@ setup_remote_env() {
       docker rm -f "${container_name}" >/dev/null 2>&1 || true
       return 1
     fi
-    export CODEX_TEST_REMOTE_EXEC_SERVER_PID="${remote_exec_server_pid}"
-    export CODEX_TEST_REMOTE_EXEC_SERVER_URL="ws://${container_ip}:${remote_exec_server_port}"
+    export FORESTX_TEST_REMOTE_EXEC_SERVER_PID="${remote_exec_server_pid}"
+    export FORESTX_TEST_REMOTE_EXEC_SERVER_URL="ws://${container_ip}:${remote_exec_server_port}"
   fi
 
-  export CODEX_TEST_REMOTE_ENV="${container_name}"
-  export CODEX_TEST_REMOTE_ENV_CONTAINER_NAME="${container_name}"
-  export CODEX_TEST_ENVIRONMENT="docker"
+  export FORESTX_TEST_REMOTE_ENV="${container_name}"
+  export FORESTX_TEST_REMOTE_ENV_CONTAINER_NAME="${container_name}"
+  export FORESTX_TEST_ENVIRONMENT="docker"
 }
 
 wait_for_remote_exec_server_port() {
@@ -111,15 +111,15 @@ wait_for_remote_exec_server_port() {
   return 1
 }
 
-codex_remote_env_cleanup() {
-  if [[ -n "${CODEX_TEST_REMOTE_ENV:-}" ]]; then
-    docker rm -f "${CODEX_TEST_REMOTE_ENV}" >/dev/null 2>&1 || true
-    unset CODEX_TEST_REMOTE_ENV
+forestx_remote_env_cleanup() {
+  if [[ -n "${FORESTX_TEST_REMOTE_ENV:-}" ]]; then
+    docker rm -f "${FORESTX_TEST_REMOTE_ENV}" >/dev/null 2>&1 || true
+    unset FORESTX_TEST_REMOTE_ENV
   fi
-  unset CODEX_TEST_REMOTE_ENV_CONTAINER_NAME
-  unset CODEX_TEST_REMOTE_EXEC_SERVER_PID
-  unset CODEX_TEST_REMOTE_EXEC_SERVER_URL
-  unset CODEX_TEST_ENVIRONMENT
+  unset FORESTX_TEST_REMOTE_ENV_CONTAINER_NAME
+  unset FORESTX_TEST_REMOTE_EXEC_SERVER_PID
+  unset FORESTX_TEST_REMOTE_EXEC_SERVER_URL
+  unset FORESTX_TEST_ENVIRONMENT
 }
 
 if ! is_sourced; then
@@ -131,10 +131,10 @@ old_shell_options="$(set +o)"
 set -euo pipefail
 if setup_remote_env; then
   status=0
-  echo "CODEX_TEST_REMOTE_ENV=${CODEX_TEST_REMOTE_ENV}"
-  echo "CODEX_TEST_ENVIRONMENT=${CODEX_TEST_ENVIRONMENT}"
-  echo "CODEX_TEST_REMOTE_EXEC_SERVER_URL=${CODEX_TEST_REMOTE_EXEC_SERVER_URL}"
-  echo "Remote env ready. Run your command, then call: codex_remote_env_cleanup"
+  echo "FORESTX_TEST_REMOTE_ENV=${FORESTX_TEST_REMOTE_ENV}"
+  echo "FORESTX_TEST_ENVIRONMENT=${FORESTX_TEST_ENVIRONMENT}"
+  echo "FORESTX_TEST_REMOTE_EXEC_SERVER_URL=${FORESTX_TEST_REMOTE_EXEC_SERVER_URL}"
+  echo "Remote env ready. Run your command, then call: forestx_remote_env_cleanup"
 else
   status=$?
 fi

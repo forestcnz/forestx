@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "code-mode-host",
+    crate_name = "forestx_code_mode_host",
+)

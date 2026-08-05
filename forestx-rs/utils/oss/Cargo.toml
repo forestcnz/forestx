@@ -1,0 +1,17 @@
+[package]
+name = "forestx-utils-oss"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-core = { workspace = true }
+forestx-lmstudio = { workspace = true }
+forestx-model-provider-info = { workspace = true }
+forestx-ollama = { workspace = true }
+
+[lib]
+doctest = false

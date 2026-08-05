@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "cli",
+    crate_name = "forestx_utils_cli",
+)

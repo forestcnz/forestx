@@ -1,15 +1,15 @@
 {
-  "name": "@openai/codex-sdk",
+  "name": "@openai/forestx-sdk",
   "version": "0.0.0-dev",
-  "description": "TypeScript SDK for Codex APIs.",
+  "description": "TypeScript SDK for Forestx APIs.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openai/codex.git",
+    "url": "git+https://github.com/openai/forestx.git",
     "directory": "sdk/typescript"
   },
   "keywords": [
     "openai",
-    "codex",
+    "forestx",
     "sdk",
     "typescript",
     "api"

@@ -30,9 +30,9 @@ importers:
         specifier: ^3.5.3
         version: 3.5.3
 
-  codex-cli: {}
+  forestx-cli: {}
 
-  codex-rs/responses-api-proxy/npm: {}
+  forestx-rs/responses-api-proxy/npm: {}
 
   sdk/typescript:
     devDependencies:

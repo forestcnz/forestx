@@ -1,0 +1,22 @@
+load("//:defs.bzl", "MACOS_WEBRTC_RUSTC_LINK_FLAGS", "forestx_rust_crate")
+load("//bazel/platforms:release_binaries.bzl", "multiplatform_binaries")
+load("//bazel/rules:e2e_benchmark.bzl", "forestx_e2e_benchmark")
+
+forestx_rust_crate(
+    name = "cli",
+    crate_name = "forestx_cli",
+    extra_binaries = [
+        "//forestx-rs/bwrap:bwrap",
+    ],
+    rustc_flags_extra = MACOS_WEBRTC_RUSTC_LINK_FLAGS,
+    test_data_extra = glob(["src/**/snapshots/**"]),
+)
+
+multiplatform_binaries(
+    name = "forestx",
+)
+
+forestx_e2e_benchmark(
+    name = "forestx-help",
+    binaries = [":forestx"],
+)

@@ -1,8 +1,8 @@
 import path from "node:path";
 
-export function codexPathOverride() {
+export function forestxPathOverride() {
   return (
-    process.env.CODEX_EXECUTABLE ??
-    path.join(process.cwd(), "..", "..", "codex-rs", "target", "debug", "codex")
+    process.env.FORESTX_EXECUTABLE ??
+    path.join(process.cwd(), "..", "..", "forestx-rs", "target", "debug", "forestx")
   );
 }

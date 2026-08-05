@@ -1,0 +1,38 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-mcp-extension"
+version.workspace = true
+
+[lib]
+name = "forestx_mcp_extension"
+path = "src/lib.rs"
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-core = { workspace = true }
+forestx-core-plugins = { workspace = true }
+forestx-config = { workspace = true }
+forestx-connectors = { workspace = true }
+forestx-connectors-extension = { workspace = true }
+forestx-exec-server = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-features = { workspace = true }
+forestx-mcp = { workspace = true }
+forestx-plugin = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-utils-absolute-path = { workspace = true }
+forestx-utils-path-uri = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true, features = ["sync"] }
+
+[dev-dependencies]
+forestx-login = { workspace = true }
+pretty_assertions = { workspace = true }
+tempfile = { workspace = true }
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }

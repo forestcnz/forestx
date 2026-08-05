@@ -1,0 +1,35 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-model-provider"
+version.workspace = true
+
+[lib]
+doctest = false
+name = "forestx_model_provider"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-api = { workspace = true }
+forestx-agent-identity = { workspace = true }
+forestx-aws-auth = { workspace = true }
+forestx-http-client = { workspace = true }
+forestx-feedback = { workspace = true }
+forestx-login = { workspace = true }
+forestx-model-provider-info = { workspace = true }
+forestx-models-manager = { workspace = true }
+forestx-otel = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-response-debug-context = { workspace = true }
+http = { workspace = true }
+tokio = { workspace = true, features = ["sync", "time"] }
+tracing = { workspace = true, features = ["log"] }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true, features = ["macros", "rt"] }
+wiremock = { workspace = true }

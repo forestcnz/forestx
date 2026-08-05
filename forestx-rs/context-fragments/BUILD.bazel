@@ -1,0 +1,6 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "context-fragments",
+    crate_name = "forestx_context_fragments",
+)

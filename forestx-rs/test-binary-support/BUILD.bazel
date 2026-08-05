@@ -1,0 +1,7 @@
+load("//:defs.bzl", "forestx_rust_crate")
+
+forestx_rust_crate(
+    name = "test-binary-support",
+    crate_name = "forestx_test_binary_support",
+    crate_srcs = ["lib.rs"],
+)

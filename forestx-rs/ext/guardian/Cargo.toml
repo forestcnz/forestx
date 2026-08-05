@@ -1,0 +1,19 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-guardian"
+version.workspace = true
+
+[lib]
+name = "forestx_guardian"
+path = "src/lib.rs"
+test = false
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-core = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-protocol = { workspace = true }

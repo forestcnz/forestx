@@ -11,14 +11,14 @@ ensure_local_sdk_src()
 
 import asyncio
 
-from openai_codex import AsyncCodex, ImageInput, TextInput
+from openai_forestx import AsyncForestx, ImageInput, TextInput
 
 IMAGE_DATA_URL = generated_sample_image_data_url()
 
 
 async def main() -> None:
-    async with AsyncCodex(config=runtime_config()) as codex:
-        thread = await codex.thread_start(
+    async with AsyncForestx(config=runtime_config()) as forestx:
+        thread = await forestx.thread_start(
             model="gpt-5.4", config={"model_reasoning_effort": "high"}
         )
         turn = await thread.turn(

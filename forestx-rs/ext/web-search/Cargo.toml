@@ -1,0 +1,32 @@
+[package]
+edition.workspace = true
+license.workspace = true
+name = "forestx-web-search-extension"
+version.workspace = true
+
+[lib]
+name = "forestx_web_search_extension"
+path = "src/lib.rs"
+doctest = false
+
+[lints]
+workspace = true
+
+[dependencies]
+forestx-api = { workspace = true }
+forestx-core = { workspace = true }
+forestx-extension-api = { workspace = true }
+forestx-extension-items = { workspace = true }
+forestx-login = { workspace = true }
+forestx-model-provider = { workspace = true }
+forestx-model-provider-info = { workspace = true }
+forestx-otel = { workspace = true }
+forestx-protocol = { workspace = true }
+forestx-tools = { workspace = true }
+http = { workspace = true }
+schemars = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
