@@ -481,7 +481,6 @@ jobs:
     timeout-minutes: 45
     environment:
       name: codesigning
-      deployment: false
     permissions:
       contents: read
       id-token: write
@@ -879,7 +878,6 @@ jobs:
     timeout-minutes: 45
     environment:
       name: codesigning
-      deployment: false
     permissions:
       contents: read
       id-token: write
@@ -1587,7 +1585,6 @@ jobs:
     permissions: {}
     environment:
       name: dev-website-vercel-deploy
-      deployment: false
 
     steps:
       - name: Trigger developers.openai.com deploy
@@ -1618,7 +1615,6 @@ jobs:
       contents: read
     environment:
       name: mainline-release-winget
-      deployment: false
 
     steps:
       - name: Publish to WinGet
