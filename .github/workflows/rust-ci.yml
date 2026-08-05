@@ -172,7 +172,6 @@ jobs:
     needs: changed
     environment:
       name: bazel
-      deployment: false
     strategy:
       fail-fast: false
       matrix:

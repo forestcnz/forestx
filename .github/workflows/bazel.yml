@@ -49,7 +49,6 @@ jobs:
     name: Bazel test on ${{ matrix.os }} for ${{ matrix.target }}
     environment:
       name: bazel
-      deployment: false
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -149,7 +148,6 @@ jobs:
     name: Bazel test on windows-latest for x86_64-pc-windows-gnullvm shard ${{ matrix.shard }}/4
     environment:
       name: bazel
-      deployment: false
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -267,7 +265,6 @@ jobs:
     name: Bazel test on windows-latest for x86_64-pc-windows-msvc (native main)
     environment:
       name: bazel
-      deployment: false
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -360,7 +357,6 @@ jobs:
     name: Bazel clippy on ${{ matrix.os }} for ${{ matrix.target }}
     environment:
       name: bazel
-      deployment: false
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -460,7 +456,6 @@ jobs:
     name: Verify release build on ${{ matrix.os }} for ${{ matrix.target }}
     environment:
       name: bazel
-      deployment: false
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
